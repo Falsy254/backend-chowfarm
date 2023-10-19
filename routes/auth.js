@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const { check, validationResult } = require("express-validator");
 const userRegister = require("../controllers/auth");
+const usesignin = require("./././../controllers/auth")
 
 router.post(
   "/signup",
