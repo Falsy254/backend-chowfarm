@@ -54,10 +54,10 @@ router.post(
       const token = await jwt.sign(
         { id: user._id, emailAddress: user.emaiAddress },
         process.env.JWT_SIGN,
-        { expiresIn: "4rd" }
+        { expiresIn: "4d" }
       );
       console.log(token);
-      const { password: userpassword, ...others } = user.$getPopulatedDocs;
+      const { password: userpassword, ...others } = user._doc;
       res.status(200).json({ ...others, token });
     } catch (error) {
       res.status(400).json(error);
