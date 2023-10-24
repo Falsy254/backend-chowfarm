@@ -1,10 +1,13 @@
 const {
+    addProduct,
   getProduct,
   singleProduct,
   updateProduct,
   deletedProduct,
 } = require("../controllers/product");
 const router = express.Router();
+//Adding posts
+router.post("/new",addProduct);
 //Getting all products
 router.get("/", getProduct);
 //Getting single Produvt

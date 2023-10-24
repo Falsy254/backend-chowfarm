@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 
 const userRegister = async (req, res) => {
     try {
-      const { emailAddress, password, firstName, lastName, phoneNumber } = req.body;
+      const { emailAddress, password, firstName, lastName, phoneNumber, isFarmer } = req.body;
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(404).json({ error: errors.array() });
@@ -28,6 +28,7 @@ const userRegister = async (req, res) => {
         emailAddress,
         phoneNumber,
         password: hashedpassword,
+        isFarmer
       });
       const savedUser = await newUser.save();
       const token = await jwt.sign(

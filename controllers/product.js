@@ -55,4 +55,4 @@ const addProduct = async (req, res) => {
       res.status(404).json(error);
     }
   };
-  module.exports = { getProduct,singleProduct,updateProduct,deletedProduct };
+  module.exports = { addProduct,getProduct,singleProduct,updateProduct,deletedProduct };
