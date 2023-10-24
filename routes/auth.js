@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const { check, validationResult } = require("express-validator");
+const jwt = require("jsonwebtoken");
 const userRegister = require("../controllers/auth");
 const usesignin = require("./././../controllers/auth")
 const User = require("../models/user")
@@ -56,8 +57,8 @@ router.post(
         { expiresIn: "4rd" }
       );
       console.log(token);
-      const { password: userpassword, ...othres } = user.$getPopulatedDocs;
-      res.status(200).json({ ...othres, token });
+      const { password: userpassword, ...others } = user.$getPopulatedDocs;
+      res.status(200).json({ ...others, token });
     } catch (error) {
       res.status(400).json(error);
     }
