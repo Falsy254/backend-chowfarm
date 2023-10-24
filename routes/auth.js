@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 const { check, validationResult } = require("express-validator");
 const userRegister = require("../controllers/auth");
 const usesignin = require("./././../controllers/auth")
+const User = require("../models/user")
 
 router.post(
   "/signup",
@@ -24,12 +25,12 @@ router.post(
   [check("emailAddress", "please enter a valid email").isEmail()],
   async (req, res) => {
     try {
-      const { emaiAddress, password } = req.body;
+      const { emailAddress, password } = req.body;
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         return res.status(408).json({ error: errors.array() });
       }
-      const user = await User.findOne({ emaiAddress });
+      const user = await User.findOne({ emailAddress });
       if (!user) {
         return res.status(400).json({
           error: [
@@ -50,7 +51,7 @@ router.post(
         });
       }
       const token = await jwt.sign(
-        { id: user._id, emaiAddressl: user.emaiAddress },
+        { id: user._id, emailAddress: user.emaiAddress },
         process.env.JWT_SIGN,
         { expiresIn: "4rd" }
       );
