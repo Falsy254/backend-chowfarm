@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const {
-    addProduct,
+  addProduct,
   getProduct,
   singleProduct,
   updateProduct,
@@ -9,7 +9,7 @@ const {
 } = require("../controllers/product");
 
 //Adding product
-router.post("/new",addProduct);
+router.post("/new", addProduct);
 //Getting all products
 router.get("/", getProduct);
 //Getting single Produvt
