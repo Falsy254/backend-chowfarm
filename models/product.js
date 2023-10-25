@@ -6,4 +6,4 @@ const Productschema = new mongoose.Schema({
   productDescription: { type: String, required: true },
   outofStock: { type: String, required: true },
 });
-module.exports = mongoose.model("product", Productschema);
+module.exports = mongoose.model("Product", Productschema);
