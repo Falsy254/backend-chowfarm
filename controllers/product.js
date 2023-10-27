@@ -8,7 +8,7 @@ const addProduct = async (req, res) => {
       productImg,
       productDescription,
       productPrice,
-      outofStock,
+      Stock,
     });
     const savedProducts = await newProduct.save();
     res.status(201).json(savedProducts);
