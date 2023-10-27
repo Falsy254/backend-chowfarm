@@ -5,8 +5,7 @@ const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
 const userRegister = require("../controllers/auth");
 // const usesignin = require("./././../controllers/auth")
-const User = require("../models/user")
-
+const User = require("../models/user");
 router.post(
   "/signup",
   [
