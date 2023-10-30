@@ -7,7 +7,7 @@ const postRoutes = require("./routes/product");
 const app = express();
 app.use(express.json());
 dotenv.config();
-app.use(cors());
+app.use(cors({origin:"*"}));
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
 
