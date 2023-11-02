@@ -22,7 +22,6 @@ const generateAccessToken = async () => {
     throw error;
   }
 };
-// Send money using the generated access token
 const sendMoney = async () => {
   try {
     const accessToken = await generateAccessToken();
@@ -34,11 +33,10 @@ const sendMoney = async () => {
     const password = Buffer.from(
       `${lipaNaMpesaShortcode}${lipaNaMpesaPasskey}${timestamp}`
     ).toString("base64");
-
     const transactionRequest = {
       Initiator: initiatorName,
       SecurityCredential: securityCredential,
-      CommandID: "SalaryPayment", // You can change this based on your use case
+      CommandID: "SalaryPayment",
       Amount: amount,
       PartyA: lipaNaMpesaShortcode,
       PartyB: phoneNumber,
@@ -49,7 +47,6 @@ const sendMoney = async () => {
       TransactionType: "CustomerPayBillOnline",
       LipaNaMpesaOnlinePasskey: lipaNaMpesaPasskey,
     };
-
     const response = await axios.post(
       "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       transactionRequest,
@@ -59,11 +56,9 @@ const sendMoney = async () => {
         },
       }
     );
-
     console.log("M-Pesa transaction response:", response.data);
   } catch (error) {
     console.error("Error sending money:", error.response.data);
   }
 };
-
 sendMoney();

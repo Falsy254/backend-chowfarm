@@ -3,7 +3,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const { check, validationResult } = require("express-validator");
 const jwt = require("jsonwebtoken");
-const userRegister = require("../controllers/auth");
+const {userRegister, getUsers} = require("../controllers/auth");
 // const usesignin = require("./././../controllers/auth")
 const User = require("../models/user");
 router.post(
@@ -63,4 +63,6 @@ router.post(
     }
   }
 );
+
+router.get("/", getUsers);
 module.exports = router;
